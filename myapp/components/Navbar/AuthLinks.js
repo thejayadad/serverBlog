@@ -14,7 +14,9 @@ const AuthLinks = async () => {
         {
             session ? (
                 <div className='flex items-center gap-4'>
-                    <span>{session?.user.name}</span>
+                    <Link
+                    href={`/account/`}
+                    >{session?.user.name}</Link>
                     <LogOutBtn />
                 </div>
             ) : (
