@@ -11,11 +11,8 @@ const UserNameForm = ({desiredUsername}) => {
       const result = await grabUsername(formData);
   
       setTaken(result === false);
-      if(result){
-        redirect('/account/'+formData.get('username'))
-      }
       if (result) {
-        redirect('/account?created='+formData.get('username'));
+        redirect('/account/'+formData.get('username'));
       }
     }
   
