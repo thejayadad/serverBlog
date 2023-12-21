@@ -1,10 +1,11 @@
 import React from 'react'
 import { authOptions } from '../api/auth/[...nextauth]/route'
 import {getServerSession} from "next-auth";
+import UserNameForm from '@/components/Forms/UserNameForm';
 
 
 
-const AccountPage = async ({searchParams}) => {
+const AccountPage = async ({searchParams, ...rest}) => {
     const session = await getServerSession(authOptions);
     const desiredUsername = searchParams?.desiredUsername;
     if (!session) {
@@ -19,19 +20,7 @@ const AccountPage = async ({searchParams}) => {
 
         {session?.user?.name}<br />
 
-        <form
-        className='flex flex-col p-8 max-w-screen-md gap-4'
-        >
-            <input
-            type='text'
-            className='p-4'
-            placeholder='UserName'
-            />
-            <button
-            className='cursor-pointer border border-primary p-4'
-            type='submit'
-            >Your UserName</button>
-        </form>
+        <UserNameForm desiredUsername={desiredUsername} />
     </div>
   )
 }
