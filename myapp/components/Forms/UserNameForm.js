@@ -12,7 +12,7 @@ const UserNameForm = ({desiredUsername}) => {
   
       setTaken(result === false);
       if (result) {
-        redirect('/account/'+formData.get('username'));
+        redirect('/account?created='+formData.get('username'));
       }
     }
   
